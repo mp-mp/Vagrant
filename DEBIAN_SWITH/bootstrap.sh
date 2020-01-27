@@ -27,8 +27,8 @@ sudo apt-get install -y dotnet-sdk-3.1
 
 
 git clone https://github.com/krawat10/EthernetSwitch.git
-sudo dotnet publish -c Release EthernetSwitch/NewProject/EthernetSwitch/EthernetSwitch
-cd /home/vagrant/EthernetSwitch/NewProject/EthernetSwitch/EthernetSwitch/bin/Release/netcoreapp3.1/publish/
+sudo dotnet publish -c Release EthernetSwitch/EthernetSwitch
+cd /home/vagrant/EthernetSwitch/EthernetSwitch/publish/Release/netcoreapp3.1/publish/
 sudo dotnet EthernetSwitch.dll
 
 # pip3 install -r EthernetSwitch/requirements.txt
