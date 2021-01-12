@@ -9,6 +9,14 @@ aptitude install -y tmux
 aptitude install -y git
 sudo apt install -y gnupg
 
+#SNMP
+sudo apt install snmpd snmp libsnmp-dev -y
+sudo systemctl stop snmpd
+sudo net-snmp-create-v3-user -ro -A adminadmin -a SHA -X adminadmin -x AES snmpro
+sudo systemctl start snmpd
+sudo snmpwalk -v3 -a SHA -A adminadmin -x AES -X adminadmin -l authPriv -u snmpro localhost | head -5
+
+#.NET Core
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
 sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
 wget -q https://packages.microsoft.com/config/debian/10/prod.list
