@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
-
+#.NET Core
 apt-get update
+
+wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-3.1
+
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y aspnetcore-runtime-3.1
+
+sudo apt-get install -y dotnet-runtime-3.1
+
+
 apt-get install -y aptitude
 aptitude install -y tcpdump
 aptitude install -y bridge-utils
@@ -16,22 +33,22 @@ sudo net-snmp-create-v3-user -ro -A adminadmin -a SHA -X adminadmin -x AES snmpr
 sudo systemctl start snmpd
 sudo snmpwalk -v3 -a SHA -A adminadmin -x AES -X adminadmin -l authPriv -u snmpro localhost | head -5
 
-#.NET Core
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
-sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
-wget -q https://packages.microsoft.com/config/debian/10/prod.list
-sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
-sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
-sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 
-sudo apt-get update
-sudo apt-get install -y apt-transport-https
-sudo apt-get update
-sudo apt-get install -y aspnetcore-runtime-3.1
-sudo apt-get update
-sudo apt-get install -y dotnet-runtime-3.1
-sudo apt-get update
-sudo apt-get install -y dotnet-sdk-3.1
+# wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+# sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+# wget -q https://packages.microsoft.com/config/debian/10/prod.list
+# sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+# sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+# sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+
+# sudo apt-get update
+# sudo apt-get install -y apt-transport-https
+# sudo apt-get update
+# sudo apt-get install -y aspnetcore-runtime-3.1
+# sudo apt-get update
+# sudo apt-get install -y dotnet-runtime-3.1
+# sudo apt-get update
+# sudo apt-get install -y dotnet-sdk-3.1
 
 
 git clone https://github.com/krawat10/EthernetSwitch.git
